@@ -10,3 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "megaphone.hpp"
+
+int		main(int argc, char **argv)
+{
+	(void) argc;
+	megaphone m1(argv);
+	std::cout << m1(argv)
+	return (0);
+}

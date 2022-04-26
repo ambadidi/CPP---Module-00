@@ -4,9 +4,9 @@ SRCS = megaphone.cpp
 
 FLAGS = -Wall -Wextra -Werror -c -std=c++98
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
-#INC = 
+INC = megaphone.hpp 
 
 CC = g++
 
