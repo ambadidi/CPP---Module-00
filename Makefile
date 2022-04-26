@@ -8,7 +8,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 INC = megaphone.hpp 
 
-CC = g++
+CC = clang++
 
 all: $(NAME)
 

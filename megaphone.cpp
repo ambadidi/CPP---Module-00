@@ -14,8 +14,9 @@
 
 int		main(int argc, char **argv)
 {
-	(void) argc;
-	megaphone m1(argv);
-	std::cout << m1(argv)
+	megaphone m1;
+
+	m1.phone(argc, argv);
+
 	return (0);
 }
