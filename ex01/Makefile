@@ -1,12 +1,12 @@
-NAME =
+NAME = phonebook
 
-SRCS =
+SRCS = Phonebook.cpp Repertoire.cpp
 
 FLAGS = -Wall -Wextra -Werror -c -std=c++98
 
 OBJS = $(SRCS:.cpp=.o)
 
-INC = 
+INC = repertoire.hpp 
 
 CC = clang++
 

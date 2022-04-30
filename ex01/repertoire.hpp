@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   repertoire.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abadidi <abadidi@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/30 11:52:53 by abadidi           #+#    #+#             */
+/*   Updated: 2022/04/30 11:52:53 by abadidi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef REPERTOIRE_HPP
 #define REPERTOIRE_HPP
 
@@ -27,18 +39,18 @@ class Phonebook {
 
 private:
 
-	std::string 	_firstName;
-	std::string 	_lastName;
-	std::string 	_nickname;
-	std::string 	_phoneNumber;
-	std::string 	_darkestSecret;
+	std::string 	FirstName_;
+	std::string 	LastName_;
+	std::string 	Nickname_;
+	std::string 	PhoneNumber_;
+	std::string 	DarkestSecret_;
 
-	static int		_contactNb;
-	void			_printContact(Phonebook contact);
-	void			_requestInfo(std::string prompt, std::string &contactStr);
-	void			_truncateInfo(std::string string);
-	int				_checkEmptyInfo(Phonebook contact);
-	static int		_EmptyPhonebook(Phonebook *contact);
+	static int		ContactNb_;
+	void			PrintContact_(Phonebook contact);
+	void			RequestInfo_(std::string prompt, std::string &contactStr);
+	void			TruncateInfo_(std::string string);
+	int				CheckEmptyInfo_(Phonebook contact);
+	static int		EmptyPhonebook_(Phonebook *contact);
 
 public:
 	static void		addContact(Phonebook &contact);
