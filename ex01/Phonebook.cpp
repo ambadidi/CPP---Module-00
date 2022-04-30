@@ -13,6 +13,7 @@
 #include "repertoire.hpp"
 
 int Phonebook::ContactNb_ = 0;
+		 int		Phonebook::added = 0;
 
 Phonebook::Phonebook(void)
 {
@@ -35,6 +36,8 @@ int Phonebook::getContactNb(void)
 	return Phonebook::ContactNb_;
 }
 
+
+
 void Phonebook::addContact(Phonebook &contact)
 {
 	if (Phonebook::ContactNb_ >= 8)
@@ -42,16 +45,25 @@ void Phonebook::addContact(Phonebook &contact)
 		std::cout << RED << "Le répertoire est plein. Aucun nouveau contact ne peut être ajouté. " << std::endl << RESET;
 		return;
 	}
-	Phonebook::ContactNb_ += 1;
+	Phonebook::added++;
 	std::cout << "Vous ajoutez un contact d'index n°. " << Phonebook::ContactNb_ << std::endl;
 	contact.RequestInfo_("FIRST NAME", contact.FirstName_);
 	contact.RequestInfo_("LAST NAME", contact.LastName_);
 	contact.RequestInfo_("NICKNAME", contact.Nickname_);
 	contact.RequestInfo_("Numero de Tel", contact.PhoneNumber_);
 	contact.RequestInfo_("plus lourd secret", contact.DarkestSecret_);
+	Phonebook::ContactNb_ = (Phonebook::ContactNb_  + 1) % 8;
 
 	return;
 }
+
+int Phonebook::Exist()
+{
+	if (added >= 8)
+		return 8;
+	return added;
+}
+
 
 void Phonebook::searchContact(Phonebook *contact)
 {
@@ -61,7 +73,7 @@ void Phonebook::searchContact(Phonebook *contact)
 	if (Phonebook::EmptyPhonebook_(contact) == -1)
 		return;
 	std::cout << BLUE << "     index|first name| last name|  nickname" << RESET << std::endl;
-	while (i < Phonebook::getContactNb())
+	while (i < Phonebook::Exist())
 	{
 		if (contact[i].CheckEmptyInfo_(contact[i]))
 		{
@@ -136,12 +148,12 @@ int Phonebook::EmptyPhonebook_(Phonebook *contact)
 	int	i = 0;
 	int	emptyContact = 0;
 
-	if (Phonebook::getContactNb() == 0)
+	if (Phonebook::getContactNb() == 0 &&  Phonebook::added == 0)
 	{
 		std::cout << RED << "Aucun contact dans le répertoire. Utilisez ADD pour ajouter un contact en premier." << std::endl << RESET;
 		return (-1);
 	}
-	while (i < Phonebook::getContactNb())
+	while (i < Phonebook::Exist())
 	{
 		if (contact[i].CheckEmptyInfo_(contact[i]))
 			emptyContact = 1;

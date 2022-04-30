@@ -51,6 +51,10 @@ private:
 	void			TruncateInfo_(std::string string);
 	int				CheckEmptyInfo_(Phonebook contact);
 	static int		EmptyPhonebook_(Phonebook *contact);
+	 static int  			Exist();
+
+		static int		added;
+
 
 public:
 	static void		addContact(Phonebook &contact);
