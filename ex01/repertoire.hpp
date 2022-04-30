@@ -1,132 +1,52 @@
 #ifndef REPERTOIRE_HPP
 #define REPERTOIRE_HPP
 
-# include <iomanip>
-# include <cstring>
 # include <iostream>
-# include <sstream>
 # include <string>
-# include <cctype>
-# define MaxContact 8
-class PhoneBook
-{
+# include <cstdlib>
+
+# define RESET			"\033[0m"
+# define BLACK			"\033[30m"				/* Black */
+# define RED			"\033[31m"				/* Red */
+# define GREEN			"\033[32m"				/* Green */
+# define YELLOW			"\033[33m"				/* Yellow */
+# define BLUE			"\033[34m"				/* Blue */
+# define MAGENTA		"\033[35m"				/* Magenta */
+# define CYAN			"\033[36m"				/* Cyan */
+# define WHITE			"\033[37m"				/* White */
+# define BOLDBLACK		"\033[1m\033[30m"		/* Bold Black */
+# define BOLDRED		"\033[1m\033[31m"		/* Bold Red */
+# define BOLDGREEN		"\033[1m\033[32m"		/* Bold Green */
+# define BOLDYELLOW		"\033[1m\033[33m"		/* Bold Yellow */
+# define BOLDBLUE		"\033[1m\033[34m"		/* Bold Blue */
+# define BOLDMAGENTA	"\033[1m\033[35m"		/* Bold Magenta */
+# define BOLDCYAN		"\033[1m\033[36m"		/* Bold Cyan */
+# define BOLDWHITE		"\033[1m\033[37m"		/* Bold White */
+
+class Phonebook {
+
 private:
-	PhoneBook	repertoire;
-	Contact		contacts[];
+
+	std::string 	_firstName;
+	std::string 	_lastName;
+	std::string 	_nickname;
+	std::string 	_phoneNumber;
+	std::string 	_darkestSecret;
+
+	static int		_contactNb;
+	void			_printContact(Phonebook contact);
+	void			_requestInfo(std::string prompt, std::string &contactStr);
+	void			_truncateInfo(std::string string);
+	int				_checkEmptyInfo(Phonebook contact);
+	static int		_EmptyPhonebook(Phonebook *contact);
 
 public:
-	PhoneBook(/* args */);
-	~PhoneBook();
+	static void		addContact(Phonebook &contact);
+	static void		searchContact(Phonebook *contact);
+	static int		getContactNb(void);
+
+	Phonebook(void);
+	~Phonebook(void);
 };
-
-PhoneBook::PhoneBook(/* args */)
-{
-}
-
-PhoneBook::~PhoneBook()
-{
-}
-class Contact
-{
-private:
-	Contact repertoire;
-	enum	enum_Entree{ADD, SEARCH, EXIT};
-	string	FirstName_;
-	string	LastName_;
-	string	NickName_;
-	string	PhoneNumber_;
-	string	DarkestSecret_;
-public:
-	void	AddContact(string FirstName_, string LastName_, string NickName_, string PhoneNumber_, string DarkestSecret_);
-	void	CheckAdd(Contact repertoire);
-//	~Contact();
-};
-void	Contact::CheckAdd(Contact repertoire)
-{
-
-}
-
-void	Contact::AddContact(string FirstName_, string LastName_, string NickName_, string PhoneNumber_, string DarkestSecret_)
-{
-	string	s1;
-	int		i = 0;
-	bool	CheckFirstName = false;
-	bool	CheckLastName = false;
-	bool	CheckNickName = false;
-	std::cout << "Tapez une chaine (ADD, SEARCH ou EXIT) : "; getline (cin, s1);
-	if (s1.at(i) == 'A' && s1.at(i + 1) == 'D' s1.at(i + 2) == 'D' && s1.size == 3) & (i = 0)
-	{
-		std::cout << "Entrer Prenom (first name) "; getline (cin, FirstName_);
-		while (FirstName_.size--)
-		{
-			while (isalpha(FirstName_[i]))
-			{
-				i++;
-				if (FirstName_.size == 0)
-					CheckFirstName = true;
-			}
-		}
-		while (CheckFirstName == false)
-		{
-			std::cout << "Error: Entrer un Vrai Prenom (first name) "; getline (cin, FirstName_);
-			i = 0;
-			while (isalpha(FirstName_[i]))
-			{
-				i++;
-				if (FirstName_.size == 0)
-					CheckFirstName = true;
-			}
-		}
-		i = 0;
-		std::cout << "Entrer Nom (last name) "; getline (cin, LastName_);
-		while (LastName_.size--)
-		{
-			while (isalpha(LastName_[i]))
-			{
-				i++;
-				if (LastName_.size == 0)
-					CheckLastName = true;
-			}
-		}
-		while (CheckLastName == false)
-		{
-			std::cout << "Error: Entrer un Vrai Nom (last name) "; getline (cin, LastName_);
-			i = 0;
-			while (isalpha(LastName_[i]))
-			{
-				i++;
-				if (LastName_.size == 0)
-					CheckLastName = true;
-			}
-		}
-	}
-	i = 0;
-	std::cout << "Entrer un Surnom (Nickname) "; getline (cin, NickName_);
-		while (NickName_.size--)
-		{
-			while (isprint(NickName_[i]))
-			{
-				i++;
-				if (NickName_.size == 0)
-					CheckNickName = true;
-			}
-		}
-		while (CheckNickName == false)
-		{
-			std::cout << "Entrer un Vrai Surnom (Nickname) "; getline (cin, NickName_);
-			i = 0;
-			while (isprint(NickName_[i]))
-			{
-				i++;
-				if (NickName_.size == 0)
-					CheckNickName = true;
-			}
-		}
-}
-
-/*Contact::~Contact()
-{
-}
-*/
 
 #endif
